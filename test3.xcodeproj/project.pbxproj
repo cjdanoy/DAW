@@ -7,7 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		703EBFFA249BE1890022A34B /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703EBFF9249BE1890022A34B /* AppKit.framework */; };
+		703EBFFB249BE19E0022A34B /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CC96342495732B00DC1223 /* AudioUnit.framework */; };
 		70CC962A2495722F00DC1223 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70CC96292495722F00DC1223 /* main.cpp */; };
+		70CC963A2495B06800DC1223 /* libSuperpoweredAudioOSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CC96392495B06700DC1223 /* libSuperpoweredAudioOSX.a */; };
+		70CC963C2495B19000DC1223 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CC963B2495B19000DC1223 /* AVFoundation.framework */; };
+		70CC963D2495B19A00DC1223 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CC96322495726400DC1223 /* CoreAudio.framework */; };
+		70CC963F2495B1A200DC1223 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CC963E2495B1A200DC1223 /* CoreMedia.framework */; };
+		70CC96412495B1AD00DC1223 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CC96402495B1AD00DC1223 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +30,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		703EBFF9249BE1890022A34B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		70CC96262495722F00DC1223 /* test3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test3; sourceTree = BUILT_PRODUCTS_DIR; };
 		70CC96292495722F00DC1223 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		70CC96322495726400DC1223 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		70CC96342495732B00DC1223 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		70CC96392495B06700DC1223 /* libSuperpoweredAudioOSX.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudioOSX.a; path = ../../SuperpoweredSDK/Superpowered/libSuperpoweredAudioOSX.a; sourceTree = "<group>"; };
+		70CC963B2495B19000DC1223 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		70CC963E2495B1A200DC1223 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		70CC96402495B1AD00DC1223 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		70CC96422495B34E00DC1223 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +47,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				703EBFFA249BE1890022A34B /* AppKit.framework in Frameworks */,
+				70CC963C2495B19000DC1223 /* AVFoundation.framework in Frameworks */,
+				70CC96412495B1AD00DC1223 /* AudioToolbox.framework in Frameworks */,
+				703EBFFB249BE19E0022A34B /* AudioUnit.framework in Frameworks */,
+				70CC963D2495B19A00DC1223 /* CoreAudio.framework in Frameworks */,
+				70CC963F2495B1A200DC1223 /* CoreMedia.framework in Frameworks */,
+				70CC963A2495B06800DC1223 /* libSuperpoweredAudioOSX.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +65,7 @@
 			children = (
 				70CC96282495722F00DC1223 /* test3 */,
 				70CC96272495722F00DC1223 /* Products */,
+				70CC96302495725400DC1223 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +83,21 @@
 				70CC96292495722F00DC1223 /* main.cpp */,
 			);
 			path = test3;
+			sourceTree = "<group>";
+		};
+		70CC96302495725400DC1223 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				70CC96422495B34E00DC1223 /* CoreFoundation.framework */,
+				703EBFF9249BE1890022A34B /* AppKit.framework */,
+				70CC963B2495B19000DC1223 /* AVFoundation.framework */,
+				70CC96402495B1AD00DC1223 /* AudioToolbox.framework */,
+				70CC963E2495B1A200DC1223 /* CoreMedia.framework */,
+				70CC96392495B06700DC1223 /* libSuperpoweredAudioOSX.a */,
+				70CC96342495732B00DC1223 /* AudioUnit.framework */,
+				70CC96322495726400DC1223 /* CoreAudio.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,10 +214,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/chriskringle/desktop/superpoweredsdk/**";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -228,9 +268,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/chriskringle/desktop/superpoweredsdk/**";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -238,7 +280,10 @@
 		70CC962E2495722F00DC1223 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_STYLE = Automatic;
+				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/chriskringle/desktop/superpoweredsdk/**";
+				"LIBRARY_SEARCH_PATHS[arch=*]" = "/Users/chriskringle/desktop/superpoweredsdk/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -246,7 +291,10 @@
 		70CC962F2495722F00DC1223 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_STYLE = Automatic;
+				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/chriskringle/desktop/superpoweredsdk/**";
+				"LIBRARY_SEARCH_PATHS[arch=*]" = "/Users/chriskringle/desktop/superpoweredsdk/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

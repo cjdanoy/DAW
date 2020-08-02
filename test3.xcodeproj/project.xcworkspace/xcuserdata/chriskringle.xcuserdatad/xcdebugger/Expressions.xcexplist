@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "main:main.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "decoder.getSamplerate()">
+            </PersistentString>
+            <PersistentString
+               value = "decoder.getFramesPerChunk()">
+            </PersistentString>
+            <PersistentString
+               value = "decoder.getDurationFrames()">
+            </PersistentString>
+            <PersistentString
+               value = "result">
+            </PersistentString>
+            <PersistentString
+               value = "decoder.getDurationSeconds()">
+            </PersistentString>
+            <PersistentString
+               value = "analyzer.bpm">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

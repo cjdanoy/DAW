@@ -16,7 +16,6 @@
 #include "SuperpoweredResampler.h"
 #include "SuperpoweredAnalyzer.h"
 #include "SuperpoweredTimeStretching.h"
-#include "SuperpoweredMixer.h"
 
 using namespace std;
 
@@ -25,8 +24,7 @@ using namespace std;
 // JSON text
 
 struct Node{
-    short int * iBuffer; // add the address of the pointer of the chunk of frames to this Node
-    float * fBuffer;
+    short int * buffer; // add the address of the pointer of the chunk of frames to this Node
     int framesDecoded;
     Node *next;
 };
@@ -42,19 +40,18 @@ struct AnalyzerClass{
     short int * intBuffer;
     float * floatBuffer;
     FILE *df;
-    string success = "zero";
-    unsigned int getFramesPerChunk;
+    string success = "swag!";
     // needs to have pointer to head node
     // needs to have a pointer to a intBuffer, created within decodeAnalyzeBuffer
-    };
+};
 
-    // adding argument to allow for file name
+// adding argument to allow for file name
 int decodeAnalyzeBuffer(string soundPath, AnalyzerClass * analyzerClass, string name){
     
     Node * tail = NULL;
     Node * head = NULL;
     const char *cSoundPath = soundPath.c_str();
-    string woah = "/Users/Chriskringle/Desktop/" + name + ".wav";
+    string woah = "/Users/Chriskringle/Desktop/" + name + ".mp3";
     const char *variable = woah.c_str();
     Superpowered::Decoder *decoder = new Superpowered::Decoder();
     decoder->open(cSoundPath); // this will be in the function
@@ -68,17 +65,25 @@ int decodeAnalyzeBuffer(string soundPath, AnalyzerClass * analyzerClass, string 
     
     Superpowered::TimeStretching *timeStretch = new Superpowered::TimeStretching(decoder->getSamplerate());
     
+    short int * iBuffer = (short int *)malloc(decoder->getFramesPerChunk() * 2 * sizeof(short int) + 16384);
+    
     float * fBuffer = (float *)malloc(decoder->getFramesPerChunk() * 2 * sizeof(float) + 16384);
     
     while (true) {
-           short int * iBuffer = (short int *)malloc(decoder->getFramesPerChunk() * 2 * sizeof(short int) + 16384);
            int framesDecoded = decoder->decodeAudio(iBuffer, decoder->getFramesPerChunk());
            if (framesDecoded < 1) break;
         
            Node * newNode = new Node;
-           newNode->iBuffer=iBuffer;
-           newNode->fBuffer=fBuffer;
+           newNode->buffer=iBuffer;
            newNode->framesDecoded=framesDecoded;
+        /*
+           tail=newNode;
+           head=newNode;
+           n = new Node;
+           tail->next = n;
+           tail = tail->next;
+           newNode->next=NULL;
+         */
         if(head==NULL){
             head = newNode;
             tail = newNode;
@@ -95,16 +100,12 @@ int decodeAnalyzeBuffer(string soundPath, AnalyzerClass * analyzerClass, string 
     analyzerClass->peakDb = analyzer->peakDb;
     analyzerClass->loudpartsAverageDb = analyzer->loudpartsAverageDb;
     analyzerClass->head=head;
-    analyzerClass->getFramesPerChunk=decoder->getFramesPerChunk();
     // after making results we can put the analyzer structures / variables into AnalyzeClass Structure
-    // can put writeWAV in different function.
     
     while(analyzerClass->head != NULL){
-        // check value of head?
-    Superpowered::writeWAV(destinationFile, analyzerClass->head->iBuffer, analyzerClass->head->framesDecoded * 4);
-    free(analyzerClass->head->iBuffer);
+    Superpowered::writeWAV(destinationFile, analyzerClass->head->buffer, analyzerClass->head->framesDecoded * 4);
+    // free(head->buffer);
     analyzerClass->head = analyzerClass->head->next;
-        
     }
     analyzerClass->df=destinationFile;
     printf("we did it!");
@@ -116,14 +117,13 @@ int decodeAnalyzeBuffer(string soundPath, AnalyzerClass * analyzerClass, string 
     delete timeStretch;
     delete decoder;
     delete analyzer;
+    free(iBuffer);
     free(fBuffer);
     
     return 0;
     
 };
 // end decodeAnalyzeBuffer
-
-
 
 int main(int argc, const char * argv[]) {
     
@@ -140,26 +140,20 @@ int main(int argc, const char * argv[]) {
     
     // must instance the class to create object.
     
-    string soundPath2 = "/Users/Chriskringle/Desktop/Gracie 2.mp3";
-    string soundPath = "/Users/Chriskringle/Desktop/Crazy Train.mp3";
-    string name = "Crazy Train";
-    string name2 = "Gracie";
+    string soundPath = "/Users/Chriskringle/Desktop/Gracie 2.mp3";
+    string soundPath2 = "/Users/Chriskringle/Desktop/Crazy Train.mp3";
+    string name = "Gracie";
+    string name2 = "Crazy boy";
     // ask for path
     AnalyzerClass * analyzerClass = new AnalyzerClass;
     AnalyzerClass * analyzerClass2 = new AnalyzerClass;
         
     // call function here
     decodeAnalyzeBuffer(soundPath, analyzerClass, name);
-    // decodeAnalyzeBuffer(soundPath2, analyzerClass2, name2);
+    decodeAnalyzeBuffer(soundPath2, analyzerClass2, name2);
     
     analyzerClass->success;
-    Superpowered::MonoMixer *monoMix = new Superpowered::MonoMixer();
-    short int *intBufferOutput1 = (short int *)malloc(analyzerClass->getFramesPerChunk * 2 * sizeof(short int) + 16384);
-    float * outputFloatBuffer = (float *)malloc(analyzerClass->getFramesPerChunk * 2 * sizeof(float) + 16384);
     
-    //should my mixing processor be in its own function?
-    //How to record audio? What
-    // monoMix->process(analyzerClass->head->fBuffer, analyzerClass2->head->fBuffer, NULL, NULL, outputFloatBuffer, analyzerClass->getFramesPerChunk);
     printf("End of Program.");
     
     return 0;
